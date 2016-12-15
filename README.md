@@ -1,1 +1,51 @@
 # dashmonitor
+
+A simple utility daemon for monitoring dash buttons on a local network and calling webhooks associated with them. Press button, call URL. Easy.
+
+## Installation
+
+Get the code from GitHub and install dependencies. You'll need a recent version of `nodejs` installed. You'll also need to install `libpcap` on your system.
+
+```
+brew install libpcap-dev # For OSX, your system may vary
+git clone https://github.com/Floppy/dashmonitor.git
+cd dashmonitor
+npm install
+```
+
+## Find your buttons
+
+```
+sudo node_modules/node-dash-button/bin/findbutton
+```
+
+Press the button, and the MAC address will appear in the list.
+
+## Configuration
+
+```
+cp config.json.example config.json
+nano config.json
+```
+
+Create a line for each dash button, with the MAC address from the previous step
+and the webhook URL you want to call. You can use [requestb.in](https://requestb.in) if you're just testing, otherwise hooking up to a [Zapier](https://zapier.com) webhook is a good approach to then configure other services.
+
+## Running
+
+The app needs to run as root to get access to monitor the network.
+
+```
+sudo node dashmonitor.js
+```
+
+### OSX System Daemon
+
+You can run this anywhere, but if you're using OSX, there is a plist file for running it as a system daemon. First, edit dashmonitor.plist and set the paths in the `ProgramArguments` keys correctly for your system. Then:
+
+```
+cp dashmonitor.plist /Library/LaunchDaemons
+sudo launchctl load /Library/LaunchDaemons/dashmonitor.plist
+```
+
+If you have problems with the system daemon, I highly recommend debugging it with [LaunchControl](http://www.soma-zone.com/LaunchControl/).
