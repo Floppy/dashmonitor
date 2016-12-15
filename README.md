@@ -1,6 +1,6 @@
 # dashmonitor
 
-A simple utility daemon for monitoring dash buttons on a local network and calling webhooks associated with them. Press button, call URL. Easy.
+A simple utility daemon for monitoring dash buttons on a local network and calling webhooks associated with them. Press button, call URL. Easy. This was written originally to create a [poo button](https://floppy.org.uk/blog/2016/11/20/the-poo-button/), which then got written up in [Wired](http://www.wired.co.uk/article/amazon-dash-hack-poo-button-internet-of-things).
 
 ## Installation
 
