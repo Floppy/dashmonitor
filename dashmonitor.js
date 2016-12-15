@@ -1,24 +1,31 @@
-var dash_button = require('/usr/local/lib/node_modules/node-dash-button');
-var request = require('/usr/local/lib/node_modules/request');
-var poo_button = 'ac:63:be:08:43:0e' // The MAC address for the button goes here
-var webhook = 'https://hooks.zapier.com/hooks/catch/1721423/thfntw/';
+var dash_button = require('node-dash-button');
+var request = require('request');
+var fs = require('fs');
 
-var dash = dash_button([poo_button], null, null, 'all');
+// post data as JSON to a webhook URL
+function post(url, data) {
+  request({
+    url: url,
+    method: "POST",
+    json: true,
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(data)
+  });  
+}
 
-dash.on("detected", function (dash_id){
-  if (dash_id === poo_button){
-    console.log("Parp!");
-    requestData = {
-      "when": new Date().toISOString()
-    };
-    request({
-      url: webhook,
-      method: "POST",
-      json: true,
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(requestData)
-    });
+// Load configuration
+var config = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+var buttons = config["buttons"];
+
+// Monitor the buttons!
+var dash = dash_button(Object.keys(buttons), null, null, 'all');
+console.log(new Date().toISOString() + " - started");
+dash.on("detected", function (mac){
+  when = new Date().toISOString()
+  console.log(when + " - button pushed: " + mac);
+  if (buttons[mac]) {
+    post(buttons[mac], {"when": when})
   }
 });
