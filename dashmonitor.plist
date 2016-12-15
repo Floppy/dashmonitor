@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GroupName</key>
+	<string>wheel</string>
+	<key>InitGroups</key>
+	<true/>
 	<key>KeepAlive</key>
 	<dict/>
 	<key>Label</key>
@@ -17,5 +21,7 @@
 	<string>/var/log/dashmonitor.err</string>
 	<key>StandardOutPath</key>
 	<string>/var/log/dashmonitor.log</string>
+	<key>UserName</key>
+	<string>root</string>
 </dict>
 </plist>
