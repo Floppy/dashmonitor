@@ -41,7 +41,7 @@ sudo node dashmonitor.js
 
 ### OSX System Daemon
 
-You can run this anywhere, but if you're using OSX, there is a plist file for running it as a system daemon. First, edit dashmonitor.plist and set the paths in the `ProgramArguments` keys correctly for your system. Then:
+You can run this anywhere, but if you're using OSX, there is a plist file for running it as a system daemon. First, edit dashmonitor.plist and set the paths in the `ProgramArguments` and `WorkingDirectory` keys correctly for your system. Then:
 
 ```
 cp dashmonitor.plist /Library/LaunchDaemons

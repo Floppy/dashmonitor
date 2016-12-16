@@ -13,7 +13,7 @@
 	<key>ProgramArguments</key>
 	<array>
 		<string>/usr/local/bin/node</string>
-		<string>/Users/smiths/dashmonitor/dashmonitor.js</string>
+		<string>dashmonitor.js</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
@@ -23,5 +23,7 @@
 	<string>/var/log/dashmonitor.log</string>
 	<key>UserName</key>
 	<string>root</string>
+	<key>WorkingDirectory</key>
+	<string>/Users/smiths/dashmonitor</string>
 </dict>
 </plist>
