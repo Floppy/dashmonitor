@@ -33,11 +33,11 @@ and the webhook URL you want to call. You can use [requestb.in](https://requestb
 
 ## Running
 
-The app needs to run as root to get access to monitor the network.
+```
+npm start
+```
 
-```
-sudo node dashmonitor.js
-```
+The app needs to run as root to get access to monitor the network, so you'll need to enter your password at the prompt.
 
 ### OSX System Daemon
 
