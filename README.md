@@ -13,6 +13,15 @@ cd dashmonitor
 npm install
 ```
 
+### Raspberry Pi
+```
+curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+sudo apt-get install nodejs libpcap-dev
+git clone https://github.com/Floppy/dashmonitor.git
+cd dashmonitor/
+npm install
+```
+
 ## Find your buttons
 
 ```
@@ -37,8 +46,6 @@ and the webhook URL you want to call. You can use [requestb.in](https://requestb
 npm start
 ```
 
-The app needs to run as root to get access to monitor the network, so you'll need to enter your password at the prompt.
-
 ### OSX System Daemon
 
 You can run this anywhere, but if you're using OSX, there is a plist file for running it as a system daemon. First, edit dashmonitor.plist and set the paths in the `ProgramArguments` and `WorkingDirectory` keys correctly for your system. Then:
@@ -49,3 +56,13 @@ sudo launchctl load /Library/LaunchDaemons/dashmonitor.plist
 ```
 
 If you have problems with the system daemon, I highly recommend debugging it with [LaunchControl](http://www.soma-zone.com/LaunchControl/).
+
+### systemd script
+
+There is a _systemd_ startup script for Raspbian or other Debian-ish systems:
+
+    sudo cp boot-scripts/systemd/dashbuton.service /etc/systemd/system/
+    sudo systemctl enable dashbutton.service
+    sudo start dashbutton.service
+
+_dashmonitor_ should now kick-off at boot-time
