@@ -7,7 +7,7 @@ A simple utility daemon for monitoring dash buttons on a local network and calli
 Get the code from GitHub and install dependencies. You'll need a recent version of `nodejs` installed. You'll also need to install `libpcap` on your system.
 
 ```
-brew install libpcap-dev # For OSX, your system may vary
+brew install libpcap # For OSX, your system may vary
 git clone https://github.com/Floppy/dashmonitor.git
 cd dashmonitor
 npm install
@@ -42,13 +42,11 @@ and the webhook URL you want to call. You can use [requestb.in](https://requestb
 
 ## Running
 
-The app needs to run as root to get access to monitor the network.
-
 ```
-sudo node dashmonitor.js
+npm start
 ```
 
-#### OSX System Daemon
+### OSX System Daemon
 
 You can run this anywhere, but if you're using OSX, there is a plist file for running it as a system daemon. First, edit dashmonitor.plist and set the paths in the `ProgramArguments` and `WorkingDirectory` keys correctly for your system. Then:
 
