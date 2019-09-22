@@ -19,6 +19,6 @@
   "homepage": "https://github.com/Floppy/dashmonitor#readme",
   "dependencies": {
     "node-dash-button": "~0.6",
-    "request": "~2.79"
+    "request": "~2.88"
   }
 }
